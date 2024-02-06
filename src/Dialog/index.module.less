@@ -1,0 +1,49 @@
+.modal {
+  position: relative;
+  top: 100px;
+  padding: 20px 24px;
+  background-color: #fff;
+  border-radius: 6px;
+  margin: 0 auto;
+  pointer-events: initial;
+  cursor: pointer;
+  .modal-header {
+    font-size: 16px;
+    font-weight: 500;
+    user-select: none;
+    line-height: 1.25;
+    word-wrap: break-word;
+    margin: -20px -24px;
+    padding: 20px 24px;
+    margin-bottom: 0;
+  }
+  .modal-content {
+    border-radius: 2px;
+    position: relative;
+  }
+  .modal-footer {
+    border-radius: 2px;
+    &::before {
+      display: block;
+      content: "";
+      border-top: 1px dashed #cfcdcd92;
+      margin: 12px -24px;
+    }
+  }
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    svg {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      line-height: 1;
+      &:hover {
+        path {
+          fill: #ff000092;
+        }
+      }
+    }
+  }
+}
