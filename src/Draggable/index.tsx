@@ -30,9 +30,9 @@ const Draggable = ({ inside, children }: DragProps) => {
     const currentRect = rootRef.current?.getBoundingClientRect();
     if (wrapRect && currentRect)
       insetThreshold.current = [
-        -((wrapRect?.height - currentRect?.height) / 2 - parseFloat(top)),
+        -parseFloat(top),
         (wrapRect?.width - currentRect?.width) / 2 - parseFloat(right),
-        (wrapRect?.height - currentRect?.height) / 2 - parseFloat(bottom),
+        wrapRect?.height - currentRect?.height + parseFloat(bottom),
         -((wrapRect?.width - currentRect?.width) / 2 - parseFloat(left)),
       ];
     if (transform && transform !== "none") {
