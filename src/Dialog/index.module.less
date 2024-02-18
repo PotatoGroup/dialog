@@ -1,4 +1,4 @@
-.modal {
+.dialog {
   position: relative;
   top: 100px;
   padding: 20px 24px;
@@ -7,7 +7,7 @@
   margin: 0 auto;
   pointer-events: initial;
   cursor: pointer;
-  .modal-header {
+  .dialog-header {
     font-size: 16px;
     font-weight: 500;
     user-select: none;
@@ -17,18 +17,9 @@
     padding: 20px 24px;
     margin-bottom: 0;
   }
-  .modal-content {
+  .dialog-content {
     border-radius: 2px;
     position: relative;
-  }
-  .modal-footer {
-    border-radius: 2px;
-    &::before {
-      display: block;
-      content: "";
-      border-top: 1px dashed #cfcdcd92;
-      margin: 12px -24px;
-    }
   }
   .close {
     position: absolute;

@@ -1,0 +1,24 @@
+.collapse {
+  position: relative;
+  .icon {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin: 8px 0;
+    transition: all 0.35s;
+    &::before,
+    &::after {
+      display: block;
+      width: 50%;
+      content: "";
+      border-top: 1px dashed #cfcdcd92;
+      margin: 0 18px;
+    }
+  }
+  .collapsed {
+    height: 0;
+    transition: all 0.35s;
+    overflow: hidden;
+  }
+}

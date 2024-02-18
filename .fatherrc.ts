@@ -3,7 +3,7 @@ import { defineConfig } from 'father';
 export default defineConfig({
   esm: {},
   umd: {
-    name: "draggable",
+    name: "dialog",
     output: {
       filename: "index.js",
     },

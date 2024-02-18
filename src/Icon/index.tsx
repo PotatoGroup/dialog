@@ -76,6 +76,38 @@ const icons = {
       ></path>
     </svg>
   ),
+  up: (
+    <svg
+      viewBox="0 0 1024 1024"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      p-id="2321"
+      width="32"
+      height="32"
+    >
+      <path
+        d="M512.146286 454.753524l-266.849524 266.727619L193.584762 669.744762l318.585905-318.415238 318.268952 318.415238-51.736381 51.687619z"
+        p-id="2322"
+        fill="#8a8a8a"
+      ></path>
+    </svg>
+  ),
+  down: (
+    <svg
+      viewBox="0 0 1024 1024"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      p-id="3383"
+      width="32"
+      height="32"
+    >
+      <path
+        d="M512.146286 619.52L245.296762 352.792381 193.584762 404.48l318.585905 318.415238 318.268952-318.415238-51.736381-51.687619z"
+        p-id="3384"
+        fill="#8a8a8a"
+      ></path>
+    </svg>
+  ),
 };
 
 export type IconType = keyof Omit<typeof icons, "close">;
@@ -94,7 +126,7 @@ export default ({
   return (
     <span
       style={style}
-      className={`${styles.anticon} ${className}`}
+      className={`${styles.icon} ${className}`}
       onClick={onClick}
     >
       {icons[name]}

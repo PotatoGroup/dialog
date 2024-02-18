@@ -3,42 +3,45 @@ import Mask from "./Mask";
 import Wrap from "./Wrap";
 import Icon from "../Icon";
 import Draggable from "../Draggable";
+import Collapse from "./Collapse";
 import styles from "./index.module.less";
 
 type CalStyle = number | string;
 
-export interface ModalProps {
+export interface DialogProps {
   title?: React.ReactNode | string;
   width?: CalStyle;
   open?: boolean;
   children?: React.ReactNode;
   footer?: React.ReactNode;
+  inside?: boolean;
   draggable?: boolean;
   onClose?: () => void;
 }
 
-const Modal = ({
+const Dialog = ({
   open,
   title = "Dialog",
   width = 1024,
   children,
   footer,
   draggable,
+  inside,
   onClose,
-}: ModalProps) => {
+}: DialogProps) => {
   const modal = useMemo(() => {
     const modal = (
-      <div className={styles.modal} style={{ width }}>
-        <div data-handler className={styles["modal-header"]}>
+      <div className={styles.dialog} style={{ width }}>
+        <div data-handler className={styles["dialog-header"]}>
           {title}
         </div>
-        <div className={styles["modal-content"]}>{children}</div>
+        <div className={styles["dialog-content"]}>{children}</div>
         <Icon name="close" className={styles.close} onClick={onClose} />
-        {footer && <div className={styles["modal-footer"]}>{footer}</div>}
+        {footer && <Collapse>{footer}</Collapse>}
       </div>
     );
-    return draggable ? <Draggable>{modal}</Draggable> : modal;
-  }, [draggable]);
+    return draggable ? <Draggable inside={inside}>{modal}</Draggable> : modal;
+  }, [draggable, inside]);
 
   return open ? (
     <Mask>
@@ -47,4 +50,6 @@ const Modal = ({
   ) : null;
 };
 
-export default Modal;
+Dialog.Icon = Icon;
+
+export default Dialog;

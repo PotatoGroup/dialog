@@ -1,1 +1,3 @@
-export default 'Hello father 4!';
+import Dialog from "./Dialog";
+export type { DialogProps } from "./Dialog";
+export default Dialog;
