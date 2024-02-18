@@ -15,7 +15,7 @@ $ yarn add @astii/dialog
 import React, { useState } from "react";
 import Dialog from "@astii/dialog";
 export default () => {
-  const [open, setOpen] = useState < boolean > true;
+  const [open, setOpen] = useState<boolean>(true);
   return (
     <Dialog
       title="dialog"
