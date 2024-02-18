@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import Mask from "./Mask";
 import Wrap from "./Wrap";
 import Icon from "../Icon";

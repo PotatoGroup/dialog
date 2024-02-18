@@ -1,4 +1,4 @@
-# @@astii/dialog
+# @astii/dialog
 
 [![NPM version](https://img.shields.io/npm/v/@@astii/dialog.svg?style=flat)](https://npmjs.org/package/@@astii/dialog)
 [![NPM downloads](http://img.shields.io/npm/dm/@@astii/dialog.svg?style=flat)](https://npmjs.org/package/@@astii/dialog)
