@@ -16,6 +16,8 @@ export interface DialogProps {
   footer?: React.ReactNode;
   inside?: boolean;
   draggable?: boolean;
+  maskClosable?: boolean;
+  contentClassName?: string;
   onClose?: () => void;
 }
 
@@ -27,6 +29,8 @@ const Dialog = ({
   footer,
   draggable,
   inside,
+  maskClosable,
+  contentClassName,
   onClose,
 }: DialogProps) => {
   const modal = useMemo(() => {
@@ -35,7 +39,11 @@ const Dialog = ({
         <div data-handler className={styles["dialog-header"]}>
           {title}
         </div>
-        <div className={styles["dialog-content"]}>{children}</div>
+        <div
+          className={`${styles["dialog-content"]} ${contentClassName ?? ""}`}
+        >
+          {children}
+        </div>
         <Icon name="close" className={styles.close} onClick={onClose} />
         {footer && <Collapse>{footer}</Collapse>}
       </div>
@@ -44,7 +52,7 @@ const Dialog = ({
   }, [draggable, inside]);
 
   return open ? (
-    <Mask>
+    <Mask onClick={maskClosable ? onClose : () => {}}>
       <Wrap>{modal}</Wrap>
     </Mask>
   ) : null;
