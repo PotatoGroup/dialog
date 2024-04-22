@@ -19,7 +19,7 @@ export interface PopoverProps {
 }
 
 const Popover = ({
-  width = 500,
+  width = 600,
   content,
   children,
   className,
@@ -38,13 +38,9 @@ const Popover = ({
     const { top, left } = (
       triggerElement as HTMLElement
     ).getBoundingClientRect();
-    return { top: top + 30, left: left - parseFloat(width.toString()) / 2 };
+    return { top: top + 25, left: left - parseFloat(width.toString()) / 2 };
   }, [width, visible]);
 
-  useEffect(() => {
-    if(visible) {
-    }
-  }, [visible])
 
   return (
     <div ref={ref}>
