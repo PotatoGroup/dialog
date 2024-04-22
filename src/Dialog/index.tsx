@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useRef } from "react";
 import Mask from "./Mask";
 import Wrap from "./Wrap";
 import Icon from "../Icon";
@@ -18,6 +18,7 @@ export interface DialogProps {
   draggable?: boolean;
   maskClosable?: boolean;
   contentClassName?: string;
+  collapseControl?: boolean;
   onClose?: () => void;
 }
 
@@ -31,13 +32,25 @@ const Dialog = ({
   inside,
   maskClosable,
   contentClassName,
+  collapseControl,
   onClose,
 }: DialogProps) => {
+  const collapse = useRef<any>();
   const modal = useMemo(() => {
     const modal = (
       <div className={styles.dialog} style={{ width }}>
         <div data-handler className={styles["dialog-header"]}>
-          {title}
+          <span>{title}</span>
+          {collapseControl && (
+            <span
+              className={styles.extra}
+              onClick={() => {
+                collapse.current!.toggle();
+              }}
+            >
+              文档
+            </span>
+          )}
         </div>
         <div
           className={`${styles["dialog-content"]} ${contentClassName ?? ""}`}
@@ -45,7 +58,7 @@ const Dialog = ({
           {children}
         </div>
         <Icon name="close" className={styles.close} onClick={onClose} />
-        {footer && <Collapse>{footer}</Collapse>}
+        {footer && <Collapse ref={collapse}>{footer}</Collapse>}
       </div>
     );
     return draggable ? <Draggable inside={inside}>{modal}</Draggable> : modal;

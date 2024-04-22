@@ -19,6 +19,19 @@
     margin: -20px -24px;
     padding: 20px 24px;
     margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 4px;
+    .extra {
+      font-weight: normal;
+      color: rgba(250, 100, 0, 1);
+      &:hover{
+        text-decoration-line: underline;
+        color: rgba(250, 100, 0, .8);
+        cursor: pointer;
+      }
+    }
   }
   .dialog-content {
     border-radius: 2px;
@@ -26,7 +39,7 @@
   }
   .close {
     position: absolute;
-    top: 20px;
+    top: 19px;
     right: 20px;
     svg {
       display: inline-block;

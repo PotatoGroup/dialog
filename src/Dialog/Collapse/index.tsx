@@ -1,26 +1,37 @@
-import React from 'react'
+import React from "react";
 import styles from "./index.module.less";
 import Icon from "../../Icon";
-import { useState } from "react";
-const Collapse = ({
-  children,
-  className,
-}: {
-  children?: React.ReactNode;
-  className?: string;
-}) => {
-  const [collapse, setCollapse] = useState<boolean>(false);
-  return (
-    <div className={`${styles.collapse} ${className ?? ""}`}>
-      <div className={styles.icon}>
-        <Icon
-          name="up"
-          style={{ transform: collapse ? "rotate(180deg)" : "rotate(0)" }}
-          onClick={() => setCollapse((pre) => !pre)}
-        />
+import { useState, forwardRef, useImperativeHandle } from "react";
+const Collapse = forwardRef(
+  (
+    {
+      children,
+      className,
+    }: {
+      children?: React.ReactNode;
+      className?: string;
+    },
+    ref
+  ) => {
+    const [collapsed, setCollapsed] = useState<boolean>(true);
+
+    useImperativeHandle(ref, () => ({
+      toggle() {
+        setCollapsed((pre) => !pre);
+      },
+    }));
+    return (
+      <div className={`${styles.collapse} ${className ?? ""}`}>
+        <div className={styles.icon}>
+          <Icon
+            name="up"
+            style={{ transform: collapsed ? "rotate(180deg)" : "rotate(0)" }}
+            onClick={() => setCollapsed((pre) => !pre)}
+          />
+        </div>
+        <div className={collapsed ? styles.collapsed : ""}>{children}</div>
       </div>
-      <div className={collapse ? styles.collapsed : ""}>{children}</div>
-    </div>
-  );
-};
+    );
+  }
+);
 export default Collapse;
