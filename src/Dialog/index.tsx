@@ -4,6 +4,7 @@ import Wrap from "./Wrap";
 import Icon from "../Icon";
 import Draggable from "../Draggable";
 import Collapse from "./Collapse";
+import Popover from "../Popover";
 import styles from "./index.module.less";
 
 type CalStyle = number | string;
@@ -18,7 +19,7 @@ export interface DialogProps {
   draggable?: boolean;
   maskClosable?: boolean;
   contentClassName?: string;
-  collapseControl?: boolean;
+  extra?: React.ReactNode;
   onClose?: () => void;
 }
 
@@ -32,7 +33,7 @@ const Dialog = ({
   inside,
   maskClosable,
   contentClassName,
-  collapseControl,
+  extra,
   onClose,
 }: DialogProps) => {
   const collapse = useRef<any>();
@@ -41,16 +42,7 @@ const Dialog = ({
       <div className={styles.dialog} style={{ width }}>
         <div data-handler className={styles["dialog-header"]}>
           <span>{title}</span>
-          {collapseControl && (
-            <span
-              className={styles.extra}
-              onClick={() => {
-                collapse.current!.toggle();
-              }}
-            >
-              文档
-            </span>
-          )}
+          {extra}
         </div>
         <div
           className={`${styles["dialog-content"]} ${contentClassName ?? ""}`}
@@ -72,5 +64,9 @@ const Dialog = ({
 };
 
 Dialog.Icon = Icon;
+
+Dialog.Popover = Popover;
+
+export type { PopoverProps } from "../Popover";
 
 export default Dialog;
