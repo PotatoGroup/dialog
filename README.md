@@ -59,6 +59,7 @@ interface DialogProps {
    */
   maskClosable?: boolean;
   contentClassName?: string;
+  closeIcon?: React.ReactNode;
   onClose?: () => void;
 }
 ```
