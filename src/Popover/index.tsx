@@ -64,16 +64,18 @@ const Popover = ({
   const calcPosition = useCallback(() => {
     const triggerElement = ref.current?.firstChild;
     if (!triggerElement) return {};
-    const { top, left: triggerLeft } = (
-      triggerElement as HTMLElement
-    ).getBoundingClientRect();
+    const {
+      top,
+      left: triggerLeft,
+      width: triggerWidth,
+    } = (triggerElement as HTMLElement).getBoundingClientRect();
     const eleWidth = parseFloat(width.toString());
     const left = Math.min(
       document.body.clientWidth - eleWidth,
       triggerLeft - parseFloat(width.toString()) / 2
     );
-    const arrowLeft = triggerLeft - left;
-    setPosition({ left, top: top + 25 });
+    const arrowLeft = triggerLeft - left + triggerWidth / 2 - 4;
+    setPosition({ left, top: top + 28 });
     setArrowPosition({ left: arrowLeft, top: -10 });
   }, [width, visible]);
 

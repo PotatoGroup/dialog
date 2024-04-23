@@ -20,6 +20,7 @@ export interface DialogProps {
   maskClosable?: boolean;
   contentClassName?: string;
   extra?: React.ReactNode;
+  closeIcon?: React.ReactNode;
   onClose?: () => void;
 }
 
@@ -34,6 +35,7 @@ const Dialog = ({
   maskClosable,
   contentClassName,
   extra,
+  closeIcon,
   onClose,
 }: DialogProps) => {
   const collapse = useRef<any>();
@@ -49,7 +51,13 @@ const Dialog = ({
         >
           {children}
         </div>
-        <Icon name="close" className={styles.close} onClick={onClose} />
+        {closeIcon ? (
+          <span className={styles.close} onClick={onClose}>
+            {closeIcon}
+          </span>
+        ) : (
+          <Icon name="close" className={styles.close} onClick={onClose} />
+        )}
         {footer && <Collapse ref={collapse}>{footer}</Collapse>}
       </div>
     );
