@@ -14,7 +14,7 @@ const Mask = ({
         if (e.target === e.currentTarget) {
           onClick?.();
         }
-        e.stopPropagation();
+        //e.stopPropagation();
       }}
     >
       {children}

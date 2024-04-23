@@ -41,6 +41,13 @@ const Popover = ({
     return { top: top + 25, left: left - parseFloat(width.toString()) / 2 };
   }, [width, visible]);
 
+  useEffect(() => {
+    document.body.addEventListener("click", (e) => {
+      //@ts-ignore
+      if (ref.current?.contains(e.target)) return;
+      setVisible(false)
+    });
+  }, []);
 
   return (
     <div ref={ref}>
@@ -49,6 +56,7 @@ const Popover = ({
         style={{ width, display: visible ? "block" : "none", ...position }}
         className={`${styles.popover} ${className ?? ""}`}
       >
+        <div className={styles.arrow} />
         {content}
       </div>
     </div>

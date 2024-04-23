@@ -1,6 +1,6 @@
 {
   "name": "@astii/dialog",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "dialog",
   "main": "dist/umd/index.js",
   "module": "dist/esm/index.js",
