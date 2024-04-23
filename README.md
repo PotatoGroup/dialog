@@ -42,6 +42,7 @@ interface DialogProps {
   width?: CalStyle;
   open?: boolean;
   children?: React.ReactNode;
+  extra?: React.ReactNode;
   footer?: React.ReactNode;
   /**
    * dialog can be drag with handler
@@ -53,6 +54,11 @@ interface DialogProps {
    * @default false
    */
   inside?: boolean;
+  /**
+   * close when click mask
+   */
+  maskClosable?: boolean;
+  contentClassName?: string;
   onClose?: () => void;
 }
 ```
